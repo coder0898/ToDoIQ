@@ -57,15 +57,20 @@ export function DisplayList(TodoLists) {
   );
 }
 
+const modal = document.getElementById("todoModal");
+// const openModalBtn = document.querySelector(".edit-btn");
+const closeBtn = document.querySelector(".close-btn");
+const EditTodo = document.getElementById("editTodo");
+
 export function setupListActions(setFormDataForEdit) {
   document.addEventListener("click", (e) => {
     const target = e.target.closest(".delete-btn, .edit-btn");
     if (!target) return;
 
-    const id = Number(e.target.dataset.id);
+    const id = Number(target.dataset.id);
+    let todoList = JSON.parse(localStorage.getItem("todoList")) || [];
 
-    if (e.target.matches(".delete-btn")) {
-      let todoList = JSON.parse(localStorage.getItem("todoList")) || [];
+    if (target.classList.contains("delete-btn")) {
       todoList = todoList.filter((item) => item.id !== id);
       localStorage.setItem("todoList", JSON.stringify(todoList));
       DisplayList(todoList);
@@ -73,12 +78,22 @@ export function setupListActions(setFormDataForEdit) {
       CalculateCount(todoList);
     }
 
-    if (e.target.matches(".edit-btn")) {
-      let todoList = JSON.parse(localStorage.getItem("todoList")) || [];
+    if (target.classList.contains("edit-btn")) {
       const todo = todoList.find((item) => item.id === id);
       if (todo) {
-        setFormDataForEdit(todo); // callback to load form data
+        setFormDataForEdit(todo); // send to main.js
       }
     }
   });
 }
+
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+// Close on outside click
+window.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});

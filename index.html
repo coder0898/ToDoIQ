@@ -139,6 +139,57 @@
               </table>
             </form>
           </div>
+          <!-- editForm -->
+          <div id="todoModal" class="modal">
+            <div class="modal-content">
+              <h3>Edit Todo</h3>
+              <span class="close-btn">&times;</span>
+              <form>
+                <div class="edit-content">
+                  <div class="form-group">
+                    <label for="editTodoTitle">Todo Title</label>
+                    <input
+                      type="text"
+                      id="editTodoTitle"
+                      placeholder="Add Todo Title..."
+                      required
+                    />
+                  </div>
+                  <div class="block-group">
+                    <div class="form-group">
+                      <label for="editSelectCategory">Category</label>
+                      <select id="editSelectCategory" required>
+                        <option value="">Select</option>
+                        <option value="Presonal">Personal</option>
+                        <option value="Work">Work</option>
+                        <option value="Others">Others</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="editSelectPriority">Priority</label>
+                      <select id="editSelectPriority">
+                        <option value="">Select</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="block-group">
+                    <div class="from-group">
+                      <label for="editDueDateVal">Due Date</label>
+                      <input type="date" id="editDueDateVal" required />
+                    </div>
+                    <div class="from-group">
+                      <input type="checkbox" id="editCompletedCheck" />
+                      <span id="editCheckStatus">Pending</span>
+                    </div>
+                  </div>
+                  <button class="edit-btn" id="editTodo">Edit Todo</button>
+                </div>
+              </form>
+            </div>
+          </div>
           <!-- todo listing -->
           <div class="list-content">
             <h2>All Todos</h2>

@@ -1,0 +1,118 @@
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+  }
+  
+  /* Modal content */
+  .modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    width: 95%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    overflow-x: auto;
+  }
+
+  .form-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+
+  .form-group label {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+ .block-group{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+ }
+  
+.form-group select {
+    padding: 12px;
+    font-size: 1rem;
+    border: 2px solid var(--input-border-color);
+    border-radius: 8px;
+    width: 100%;
+    min-width: 200px;
+    transition: all 0.3s ease;
+}
+
+.form-group input[type="date"] {
+    padding: 12px;
+    font-size: 1.1rem;
+    border: 2px solid var(--input-border-color);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 200px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input[type='text']{
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    border: 2px solid var(--input-border-color);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.edit-content button {
+    width: 150px;
+    height: 45px;
+    font-size: 1.1rem;
+    background-color: var(--edit-button);
+    color: #fff;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.edit-content button:hover {
+    background-color: var(--edit-hover);
+}
+  .close-btn {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 600px) {
+    .edit-content th,
+    .edit-content td {
+      display: block;
+      width: 100%;
+    }
+  
+    .edit-content tr {
+      display: block;
+      margin-bottom: 15px;
+    }
+  
+    .modal-content {
+      margin: 5% auto;
+      width: 95%;
+    }
+    
+    .form-group{
+        margin-bottom: 10px;
+    }
+    .block-group{
+        flex-direction: column;
+    }
+  }

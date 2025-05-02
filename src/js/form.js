@@ -3,10 +3,53 @@ import { DisplayList } from "./list";
 import { TableDisplay } from "./table";
 import { formatDateForInput, getFormatDate, ResetForm } from "./util";
 
-let isEditing = false;
-let editingId = null;
+const formattedDueDate = null;
 
-export function setupForm(onCreateCallback) {
+// export function setupForm(onCreateCallback, isEditEvent) {
+//   if (isEditEvent) {
+//     const title = document.getElementById("editTodoTitle");
+//     const category = document.getElementById("editSelectCategory");
+//     const dueDate = document.getElementById("editDueDateVal");
+//     const priority = document.getElementById("editSelectPriority");
+//     const completed = document.getElementById("editCompletedCheck");
+//     const checkStatus = document.getElementById("editCheckStatus");
+//     const submitBtn = document.getElementById("editTodo");
+
+//     completed.addEventListener("change", () => {
+//       checkStatus.innerText = completed.checked ? "Completed" : "Pending";
+//     });
+
+//     submitBtn.addEventListener("click", (e) => {
+//       e.preventDefault();
+//       onCreateCallback(isEditing, editingId);
+//       isEditing = false;
+//       editingId = null;
+//       isEditEvent = false;
+//     });
+//   } else {
+//     const title = document.getElementById("todoTitle");
+//     const category = document.getElementById("selectCategory");
+//     const dueDate = document.getElementById("dueDateVal");
+//     const priority = document.getElementById("selectPriority");
+//     const completed = document.getElementById("completedCheck");
+//     const checkStatus = document.getElementById("checkStatus");
+//     const submitBtn = document.getElementById("submitTodo");
+
+//     completed.addEventListener("change", () => {
+//       checkStatus.innerText = completed.checked ? "Completed" : "Pending";
+//     });
+
+//     submitBtn.addEventListener("click", (e) => {
+//       e.preventDefault();
+//       onCreateCallback(isEditing, editingId);
+//       isEditing = false;
+//       editingId = null;
+//     });
+//   }
+// }
+
+export function setupForm(onAddCallback, onEditCallback) {
+  // Add Form Setup
   const title = document.getElementById("todoTitle");
   const category = document.getElementById("selectCategory");
   const dueDate = document.getElementById("dueDateVal");
@@ -21,28 +64,58 @@ export function setupForm(onCreateCallback) {
 
   submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    onCreateCallback(isEditing, editingId);
-    isEditing = false;
-    editingId = null;
+    onAddCallback();
+  });
+
+  // Edit Form Setup
+  const editTitle = document.getElementById("editTodoTitle");
+  const editCategory = document.getElementById("editSelectCategory");
+  const editDueDate = document.getElementById("editDueDateVal");
+  const editPriority = document.getElementById("editSelectPriority");
+  const editCompleted = document.getElementById("editCompletedCheck");
+  const editCheckStatus = document.getElementById("editCheckStatus");
+  const editBtn = document.getElementById("editTodo");
+
+  editCompleted.addEventListener("change", () => {
+    editCheckStatus.innerText = editCompleted.checked ? "Completed" : "Pending";
+  });
+
+  editBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    onEditCallback();
   });
 }
 
+// export function setFormDataForEdit(todo) {
+//   document.getElementById("editTodoTitle").value = todo.title;
+//   document.getElementById("editSelectCategory").value = todo.category;
+//   document.getElementById("editDueDateVal").value = formatDateForInput(
+//     todo.dueDate
+//   );
+//   document.getElementById("editSelectPriority").value = todo.todoPriority;
+//   document.getElementById("editCompletedCheck").checked =
+//     todo.todoStatus === "Completed";
+//   document.getElementById("editCheckStatus").innerText = todo.todoStatus;
+
+//   isEditing = true;
+//   editingId = todo.id;
+
+//   // Optionally scroll to form or focus the input
+//   document.getElementById("editTodoTitle").focus();
+// }
+
 export function setFormDataForEdit(todo) {
-  document.getElementById("todoTitle").value = todo.title;
-  document.getElementById("selectCategory").value = todo.category;
-  document.getElementById("dueDateVal").value = formatDateForInput(
+  document.getElementById("editTodoTitle").value = todo.title;
+  document.getElementById("editSelectCategory").value = todo.category;
+  document.getElementById("editDueDateVal").value = formatDateForInput(
     todo.dueDate
   );
-  document.getElementById("selectPriority").value = todo.todoPriority;
-  document.getElementById("completedCheck").checked =
+  document.getElementById("editSelectPriority").value = todo.todoPriority;
+  document.getElementById("editCompletedCheck").checked =
     todo.todoStatus === "Completed";
-  document.getElementById("checkStatus").innerText = todo.todoStatus;
+  document.getElementById("editCheckStatus").innerText = todo.todoStatus;
 
-  isEditing = true;
-  editingId = todo.id;
-
-  // Optionally scroll to form or focus the input
-  document.getElementById("todoTitle").focus();
+  document.getElementById("todoModal").style.display = "block";
 }
 
 export function CreateTodo(
@@ -51,18 +124,23 @@ export function CreateTodo(
   isEditing = false,
   editingId = null
 ) {
-  const title = document.getElementById("todoTitle").value.trim();
-  const category = document.getElementById("selectCategory").value.trim();
-  const dueDate = document.getElementById("dueDateVal").value;
-  const priority = document.getElementById("selectPriority").value;
-  const isCompleted = document.getElementById("completedCheck").checked;
-  const status = isCompleted ? "Completed" : "Pending";
+  let title, category, dueDate, priority, isCompleted;
+
+  const prefix = isEditing ? "edit" : "";
+
+  title = document.getElementById(`${prefix}TodoTitle`).value.trim();
+  category = document.getElementById(`${prefix}SelectCategory`).value.trim();
+  dueDate = document.getElementById(`${prefix}DueDateVal`).value;
+  priority = document.getElementById(`${prefix}SelectPriority`).value;
+  isCompleted = document.getElementById(`${prefix}CompletedCheck`).checked;
 
   if (!title || !category || !dueDate || !priority) {
     return alert("Please enter valid data");
   }
 
+  const status = isCompleted ? "Completed" : "Pending";
   const formattedDueDate = getFormatDate(new Date(dueDate));
+
   const newTodo = {
     id: isEditing ? editingId : getNewId(),
     title,
@@ -74,11 +152,11 @@ export function CreateTodo(
   };
 
   if (isEditing) {
-    // Update the existing item
     const index = TodoLists.findIndex((item) => item.id === editingId);
     if (index !== -1) {
       TodoLists[index] = newTodo;
     }
+    document.getElementById("todoModal").style.display = "none"; // Close modal
   } else {
     TodoLists.push(newTodo);
   }

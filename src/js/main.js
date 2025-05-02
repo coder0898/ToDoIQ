@@ -3,6 +3,7 @@ import "../css/list.css";
 import "../css/todoForm.css";
 import "../css/menu.css";
 import "../css/chart.css";
+import "../css/modal.css";
 
 import { setupTabs, setupSidebarToggle } from "./tabs.js";
 import { CreateTodo, setFormDataForEdit, setupForm } from "./form.js";
@@ -13,32 +14,30 @@ import { TableDisplay } from "./table.js";
 let TodoLists = JSON.parse(localStorage.getItem("todoList")) || [];
 let todoIdCounter =
   TodoLists.length > 0 ? TodoLists[TodoLists.length - 1].id + 1 : 1;
-
-// window.addEventListener("DOMContentLoaded", () => {
-//   CalculateCount(TodoLists);
-//   setupTabs();
-//   setupSidebarToggle();
-//   setupForm((isEditing, editingId) => {
-//     CreateTodo(TodoLists, () => todoIdCounter++, isEditing, editingId);
-//   });
-//   setupListActions(() => {
-//     DisplayList(TodoLists), TableDisplay(TodoLists);
-//     CalculateCount(TodoLists);
-//   }, setFormDataForEdit);
-
-//   DisplayList(TodoLists);
-//   TableDisplay(TodoLists);
-//   CalculateCount(TodoLists);
-// });
+let currentEditId = null;
 
 window.addEventListener("DOMContentLoaded", () => {
   CalculateCount(TodoLists);
   setupTabs();
   setupSidebarToggle();
-  setupForm((isEditing, editingId) => {
-    CreateTodo(TodoLists, () => todoIdCounter++, isEditing, editingId);
+
+  setupForm(
+    () => {
+      // Add Mode
+      CreateTodo(TodoLists, () => todoIdCounter++, false, null);
+    },
+    () => {
+      // Edit Mode
+      CreateTodo(TodoLists, () => todoIdCounter++, true, currentEditId);
+      currentEditId = null;
+      document.getElementById("todoModal").style.display = "none";
+    }
+  );
+
+  setupListActions((todo) => {
+    currentEditId = todo.id;
+    setFormDataForEdit(todo);
   });
-  setupListActions(setFormDataForEdit);
 
   DisplayList(TodoLists);
   TableDisplay(TodoLists);
