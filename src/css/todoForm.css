@@ -1,0 +1,122 @@
+/* todo form */
+.todo-container{
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
+    margin-top: 10px;
+    width: 100%;
+    margin-top: 30px;background-color: var(--secondary-background);
+    padding: 20px;
+    border-radius: .5rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    margin-bottom: 20px;
+  }
+  
+  h3{
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: var(--text-background-color);
+    color: #fff;
+    font-size: 1.5rem;
+  }
+  
+  form{
+    padding: 10px;
+  }
+  /* Styling for the Todo Table */
+  .todo-content {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid var(--input-border-color);
+  }
+  
+  /* Table header styling */
+  .todo-content thead {
+    background-color: var(--text-background-color);
+    color: white;
+    text-align: center;
+  }
+  
+  .todo-content th {
+    padding: 12px 15px;
+    text-align: left;
+  }
+  
+  /* Table row styling */
+  .todo-content tbody tr {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Table cell styling */
+  .todo-content td {
+    padding: 12px 15px;
+    text-align: left;
+  }
+  
+  /* Input field styling */
+  input[type="text"], input[type="date"], select {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  /* Button styling */
+  button#submitTodo {
+    background-color:var(--text-background-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button#submitTodo:hover {
+    background-color: var(--status-pending);
+  }
+  
+  /* Style for select dropdown */
+  select {
+    font-size: 14px;
+  }
+  
+  /* Input field focus styling */
+  input:focus, select:focus {
+    border-color: #4CAF50;
+    outline: none;
+  }
+  
+  /* Responsive design */
+  @media screen and (max-width: 768px) {
+    main{
+      width: 100%;
+    }
+    .todo-container, .table-container{
+      width: 100%;
+    }
+
+    .todo-content {
+      width: 100%;
+      table-layout: auto;
+    }
+  
+    .todo-content td, .todo-content th {
+      font-size: 12px;
+      padding: 8px;
+    }
+     
+    input[type='text'],select,input[type='date']{
+      max-width: 200px;
+    }
+  
+    button#submitTodo {
+      width: 100%;
+      font-size: 14px;
+    }
+  }
+  

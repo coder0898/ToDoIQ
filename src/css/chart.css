@@ -1,0 +1,56 @@
+
+.chart-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
+    background-color: var(--secondary-background);
+    margin-top:60px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* allows wrapping on smaller screens */
+    gap: 20px;
+    width: 100%;
+    border-radius: 20px;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .canva-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    max-width: 100%;
+    flex: 1;
+    min-width: 280px;
+  }
+  
+  .canva-content h3 {
+    font-size: 1.5rem;
+    background: transparent;
+    color: var(--text-background-color);
+    margin: 0;
+    text-align: center;
+  }
+  
+  #barChart,
+  #pieChart {
+    max-height: 300px;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    aspect-ratio: 1/1; /* Ensures charts are square and scale well */
+  }
+  
+  .table-container{
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
+    padding: 20px;
+    background-color: var(--secondary-background);
+    margin-top: 20px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+    border-radius: 20px;
+  }
+
+  

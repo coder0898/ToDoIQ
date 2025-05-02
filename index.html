@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDoIQ: Your personal app</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <h1>
+        <span><i class="fa-solid fa-table-list"></i></span>ToDoIQ
+      </h1>
+      <div class="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </header>
+    <!-- main -->
+    <main>
+      <div class="menu-container">
+        <nav class="tab-container">
+          <button class="tab-link active">
+            <span><i class="fa-solid fa-chart-line"></i></span>Dashboard
+          </button>
+          <button class="tab-link">
+            <span><i class="fa-solid fa-list"></i></span>My Todo
+          </button>
+        </nav>
+      </div>
+      <div class="container">
+        <section class="tab-content content-active">
+          <h2>Dashboard</h2>
+          <div class="count-container">
+            <div class="card-width" id="total">
+              <h4>Total Todo</h4>
+              <p id="totalCount">0</p>
+            </div>
+            <div class="card-width" id="pending">
+              <h4>Pending Todo</h4>
+              <p id="pendingCount">0</p>
+            </div>
+            <div class="card-width" id="completed">
+              <h4>Completed Todo</h4>
+              <p id="completedCount">0</p>
+            </div>
+          </div>
+          <div class="chart-container">
+            <div class="canva-content">
+              <h3>Overview</h3>
+              <canvas id="pieChart"></canvas>
+            </div>
+            <div class="canva-content">
+              <h3>Pending VS Completed</h3>
+              <canvas id="barChart"></canvas>
+            </div>
+          </div>
+          <div class="table-container">
+            <h2>Recent Todo</h2>
+            <table class="todo-content">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Todo Title</th>
+                  <th>Category</th>
+                  <th>Priority</th>
+                  <th>Due Date</th>
+                  <th>Completed</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="tab-content">
+          <h2>My Todo</h2>
+          <!-- todo form -->
+          <div class="todo-container">
+            <h3>Create Todo</h3>
+            <form>
+              <table class="todo-content">
+                <thead>
+                  <tr>
+                    <th>Todo Title</th>
+                    <th>Category</th>
+                    <th>Priority</th>
+                    <th>Due Date</th>
+                    <th>Completed</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <input
+                        type="text"
+                        id="todoTitle"
+                        placeholder="Add Todo Title..."
+                        required
+                      />
+                    </td>
+                    <td>
+                      <select id="selectCategory" required>
+                        <option value="">Select</option>
+                        <option value="Presonal">Personal</option>
+                        <option value="Work">Work</option>
+                        <option value="Others">Others</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select id="selectPriority">
+                        <option value="">Select</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="date" id="dueDateVal" required />
+                    </td>
+                    <td>
+                      <input type="checkbox" id="completedCheck" />
+                      <span id="checkStatus">Pending</span>
+                    </td>
+                    <td>
+                      <button id="submitTodo">Add Todo</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </form>
+          </div>
+          <!-- todo listing -->
+          <div class="list-content">
+            <h2>All Todos</h2>
+            <div class="list-container" id="todoItemList">
+              <!-- list from JavaScript -->
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script type="module" src="/src/js/main.js"></script>
+  </body>
+</html>
