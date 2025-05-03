@@ -1,6 +1,6 @@
 import { CalculateCount } from "./dash";
 import { DisplayList } from "./list";
-import { TableDisplay } from "./table";
+import { RenderPagination, TableDisplay } from "./table";
 import { formatDateForInput, getFormatDate, ResetForm } from "./util";
 
 const formattedDueDate = null;
@@ -50,12 +50,12 @@ const formattedDueDate = null;
 
 export function setupForm(onAddCallback, onEditCallback) {
   // Add Form Setup
-  const title = document.getElementById("todoTitle");
-  const category = document.getElementById("selectCategory");
-  const dueDate = document.getElementById("dueDateVal");
-  const priority = document.getElementById("selectPriority");
-  const completed = document.getElementById("completedCheck");
-  const checkStatus = document.getElementById("checkStatus");
+  const title = document.getElementById("TodoTitle");
+  const category = document.getElementById("SelectCategory");
+  const dueDate = document.getElementById("DueDateVal");
+  const priority = document.getElementById("SelectPriority");
+  const completed = document.getElementById("CompletedCheck");
+  const checkStatus = document.getElementById("CheckStatus");
   const submitBtn = document.getElementById("submitTodo");
 
   completed.addEventListener("change", () => {
@@ -122,7 +122,9 @@ export function CreateTodo(
   TodoLists,
   getNewId,
   isEditing = false,
-  editingId = null
+  editingId = null,
+  currentIndex,
+  entriesPerPage
 ) {
   let title, category, dueDate, priority, isCompleted;
 
@@ -164,7 +166,12 @@ export function CreateTodo(
   localStorage.setItem("todoList", JSON.stringify(TodoLists));
   alert(isEditing ? "Todo Updated Successfully" : "Todo Added Successfully");
   ResetForm();
-  DisplayList(TodoLists);
-  TableDisplay(TodoLists);
+
+  // Calculate correct page to display after addition or edit
+  const totalPages = Math.ceil(TodoLists.length / entriesPerPage);
+  const newPage = isEditing ? currentIndex : totalPages; // Show last page for new items
+
+  TableDisplay(TodoLists, newPage, entriesPerPage);
+  RenderPagination(TodoLists, newPage, entriesPerPage);
   CalculateCount(TodoLists);
 }

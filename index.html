@@ -64,6 +64,7 @@
           </div>
           <div class="table-container">
             <h2>Recent Todo</h2>
+            <input type="search" id="searchTodo" placeholder="search Todo..." />
             <table class="todo-content">
               <thead>
                 <tr>
@@ -78,6 +79,14 @@
               </thead>
               <tbody></tbody>
             </table>
+            <div class="pagination">
+              <div class="page-info">
+                <p>Showing 5 entires on 1 page</p>
+              </div>
+              <div class="number-group" id="paginationControls">
+                <!-- <button>1</button> -->
+              </div>
+            </div>
           </div>
         </section>
 
@@ -103,13 +112,13 @@
                     <td>
                       <input
                         type="text"
-                        id="todoTitle"
+                        id="TodoTitle"
                         placeholder="Add Todo Title..."
                         required
                       />
                     </td>
                     <td>
-                      <select id="selectCategory" required>
+                      <select id="SelectCategory" required>
                         <option value="">Select</option>
                         <option value="Presonal">Personal</option>
                         <option value="Work">Work</option>
@@ -117,7 +126,7 @@
                       </select>
                     </td>
                     <td>
-                      <select id="selectPriority">
+                      <select id="SelectPriority">
                         <option value="">Select</option>
                         <option value="Low">Low</option>
                         <option value="Medium">Medium</option>
@@ -125,11 +134,11 @@
                       </select>
                     </td>
                     <td>
-                      <input type="date" id="dueDateVal" required />
+                      <input type="date" id="DueDateVal" required />
                     </td>
                     <td>
-                      <input type="checkbox" id="completedCheck" />
-                      <span id="checkStatus">Pending</span>
+                      <input type="checkbox" id="CompletedCheck" />
+                      <span id="CheckStatus">Pending</span>
                     </td>
                     <td>
                       <button id="submitTodo">Add Todo</button>
@@ -143,7 +152,6 @@
           <div id="todoModal" class="modal">
             <div class="modal-content">
               <h3>Edit Todo</h3>
-              <span class="close-btn">&times;</span>
               <form>
                 <div class="edit-content">
                   <div class="form-group">
@@ -186,6 +194,7 @@
                     </div>
                   </div>
                   <button class="edit-btn" id="editTodo">Edit Todo</button>
+                  <button class="close-btn">Close</button>
                 </div>
               </form>
             </div>

@@ -74,7 +74,6 @@
     width: 150px;
     height: 45px;
     font-size: 1.1rem;
-    background-color: var(--edit-button);
     color: #fff;
     border: 0;
     outline: 0;
@@ -83,13 +82,17 @@
     transition: all 0.3s ease-in-out;
 }
 
-.edit-content button:hover {
+.edit-btn{
+  background-color: var(--edit-button);
+}
+.edit-content .edit-btn:hover {
     background-color: var(--edit-hover);
 }
   .close-btn {
     float: right;
     font-size: 24px;
     cursor: pointer;
+    background-color: var(--delete-button);
   }
   
   @media (max-width: 600px) {

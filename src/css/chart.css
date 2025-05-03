@@ -53,4 +53,57 @@
     border-radius: 20px;
   }
 
-  
+  .table-container input{
+    float: right;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 250px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: all .5s ease-in-out;
+  }
+
+  .pagination{
+    padding: 10px;
+    border-bottom: 1px solid var(--input-border-color);
+    border-left: 1px solid var(--input-border-color);
+    border-right: 1px solid var(--input-border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+.number-group{
+  width: 100%;
+  max-width: 120px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 10px;
+  border-radius: 50px;
+}
+
+.number-group button{
+color: var(--text-background-color);
+  list-style: none;
+  line-height: 45px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid var(--text-background-color);
+  outline: 0;
+  width: 45px;
+}
+.number-group button.active,
+.number-group button:hover
+{
+  color: #fff;
+  background: var(--text-background-color);
+}

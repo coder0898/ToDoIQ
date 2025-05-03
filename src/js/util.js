@@ -19,12 +19,12 @@ export const createHTML = (tag, html) => {
 };
 
 export const ResetForm = () => {
-  document.getElementById("todoTitle").value = "";
-  document.getElementById("selectCategory").value = "";
-  document.getElementById("dueDateVal").value = "";
-  document.getElementById("selectPriority").value = "";
-  document.getElementById("completedCheck").checked = false;
-  document.getElementById("todoTitle").focus();
+  document.getElementById("TodoTitle").value = "";
+  document.getElementById("SelectCategory").value = "";
+  document.getElementById("DueDateVal").value = "";
+  document.getElementById("SelectPriority").value = "";
+  document.getElementById("CompletedCheck").checked = false;
+  document.getElementById("TodoTitle").focus();
 };
 
 export function formatDateForInput(dateString) {

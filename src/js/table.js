@@ -1,6 +1,6 @@
 import { createElement } from "./util";
 
-export function TableDisplay(todoList) {
+export function TableDisplay(todoList, currentIndex, entriesPerPage) {
   const tableBody = document.querySelector(".todo-content tbody");
   tableBody.innerHTML = "";
 
@@ -9,7 +9,12 @@ export function TableDisplay(todoList) {
     return;
   }
 
-  todoList.forEach(
+  const startIndex = (currentIndex - 1) * entriesPerPage;
+  const endIndex = startIndex + entriesPerPage;
+
+  const currentTodos = todoList.slice(startIndex, endIndex);
+
+  currentTodos.forEach(
     ({ id, title, category, dueDate, todoStatus, todoPriority }) => {
       const tableRow = createElement("tr");
       const IdData = createElement("td", "", id);
@@ -35,4 +40,24 @@ export function TableDisplay(todoList) {
       tableBody.appendChild(tableRow);
     }
   );
+}
+
+export function RenderPagination(todoLists, currentIndex, entriesPerPage) {
+  const Totalpage = Math.ceil(todoLists.length / entriesPerPage);
+  const paginationDiv = document.getElementById("paginationControls");
+  paginationDiv.innerHTML = "";
+
+  for (let i = 1; i <= Totalpage; i++) {
+    const pageButton = createElement("button");
+    pageButton.textContent = i;
+    pageButton.disabled = i == currentIndex;
+    pageButton.classList.remove("active");
+    pageButton.addEventListener("click", () => {
+      currentIndex = i;
+      TableDisplay(todoLists, currentIndex, entriesPerPage);
+      RenderPagination(todoLists, currentIndex, entriesPerPage);
+      pageButton.classList.add("active");
+    });
+    paginationDiv.appendChild(pageButton);
+  }
 }
