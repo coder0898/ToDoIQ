@@ -26,11 +26,25 @@ window.addEventListener("DOMContentLoaded", () => {
   setupForm(
     () => {
       // Add Mode
-      CreateTodo(TodoLists, () => todoIdCounter++, false, null);
+      CreateTodo(
+        TodoLists,
+        () => todoIdCounter++,
+        false,
+        null,
+        currentPage,
+        entriesPerPage
+      );
     },
     () => {
       // Edit Mode
-      CreateTodo(TodoLists, () => todoIdCounter++, true, currentEditId);
+      CreateTodo(
+        TodoLists,
+        () => todoIdCounter++,
+        true,
+        currentEditId,
+        currentPage,
+        entriesPerPage
+      );
       currentEditId = null;
       document.getElementById("todoModal").style.display = "none";
     }

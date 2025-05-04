@@ -170,7 +170,7 @@ export function CreateTodo(
   // Calculate correct page to display after addition or edit
   const totalPages = Math.ceil(TodoLists.length / entriesPerPage);
   const newPage = isEditing ? currentIndex : totalPages; // Show last page for new items
-
+  DisplayList(TodoLists);
   TableDisplay(TodoLists, newPage, entriesPerPage);
   RenderPagination(TodoLists, newPage, entriesPerPage);
   CalculateCount(TodoLists);
