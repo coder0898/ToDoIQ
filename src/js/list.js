@@ -105,3 +105,29 @@ window.addEventListener("click", (e) => {
     modal.style.display = "none";
   }
 });
+
+// list filter
+const FilterButtons = document.querySelectorAll(".filter-btn button");
+
+FilterButtons.forEach((button) => {
+  let todoList = JSON.parse(localStorage.getItem("todoList")) || [];
+  button.addEventListener("click", (e) => {
+    const target = e.target.closest(".btn-primary, .btn-danger, .btn-success");
+    if (!target) {
+      return "not there";
+    }
+    if (target.classList.contains("btn-danger")) {
+      let newTodoList = todoList.filter((todo) => todo.todoStatus == "Pending");
+      // console.log(newTodoList)
+      DisplayList(newTodoList);
+    } else if (target.classList.contains("btn-success")) {
+      let newTodoList = todoList.filter(
+        (todo) => todo.todoStatus == "Completed"
+      );
+      // console.log(newTodoList)
+      DisplayList(newTodoList);
+    } else {
+      DisplayList(todoList);
+    }
+  });
+});

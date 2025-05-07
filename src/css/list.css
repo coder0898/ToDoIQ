@@ -6,13 +6,6 @@
   padding: 10px;
 }
 
-.list-content h2{
-  font-size: 1.5rem;
-  border-bottom: 1px solid var(--input-border-color);
-  padding: 20px;
-  margin-bottom: 10px;
-  text-align: center;
-}
 
 .list-container {
   width: 100%;
