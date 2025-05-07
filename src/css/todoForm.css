@@ -1,24 +1,10 @@
 /* todo form */
 .todo-container{
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
-    margin-top: 10px;
-    width: 100%;
-    margin-top: 30px;background-color: var(--secondary-background);
-    padding: 20px;
-    border-radius: .5rem;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-    margin-bottom: 20px;
+    -webkit-overflow-scrolling: touch; 
   }
   
-  h3{
-    text-align: center;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: var(--text-background-color);
-    color: #fff;
-    font-size: 1.5rem;
-  }
+
   
   form{
     padding: 10px;

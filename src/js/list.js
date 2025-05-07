@@ -21,12 +21,16 @@ export function DisplayList(TodoLists) {
       todoStatus,
       todoPriority,
     }) => {
-      const card = createElement("div", "list-card");
+      const card = createElement("div", "list-card card mb-3 shadow-sm");
 
-      const header = createElement("div", "todo-header");
+      const cardBody = createElement("div", "card-body");
+      const header = createElement(
+        "div",
+        " d-flex justify-content-between align-items-start mb-2 flex-wrap"
+      );
       header.append(
-        createElement("h4", "todo-title", title),
-        createElement("span", "todo-category", category)
+        createElement("h4", "card-title mb-1", title),
+        createElement("span", "badge bg-primary todo-category", category)
       );
 
       const dates = createElement("div", "todo-dates");
@@ -35,7 +39,10 @@ export function DisplayList(TodoLists) {
         createHTML("p", `<strong>Due Date:</strong> ${dueDate}`)
       );
 
-      const statusGroup = createElement("div", "status-group");
+      const statusGroup = createElement(
+        "div",
+        "status-group flex-wrap sm:flex-column"
+      );
       const statusSpan = createElement("span", "todo-status", todoStatus);
       if (statusSpan.innerText == "Completed") {
         statusSpan.style.color = "var(--status-completed)";
@@ -47,11 +54,12 @@ export function DisplayList(TodoLists) {
 
       const actions = createElement("div", "todo-actions");
       actions.innerHTML = `
-      <button class="edit-btn" data-id="${id}">Edit</button>
-      <button class="delete-btn" data-id="${id}">Delete</button>
-    `;
+        <button class="edit-btn" data-id="${id}">Edit</button>
+        <button class="delete-btn" data-id="${id}">Delete</button>
+      `;
 
-      card.append(header, dates, statusGroup, actions);
+      cardBody.append(header, dates, statusGroup, actions);
+      card.append(cardBody);
       list.append(card);
     }
   );

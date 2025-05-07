@@ -2,38 +2,18 @@
 .chart-container {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
-    background-color: var(--secondary-background);
-    margin-top:60px;
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap; /* allows wrapping on smaller screens */
-    gap: 20px;
-    width: 100%;
-    border-radius: 20px;
     transition: all 0.5s ease-in-out;
   }
   
   .canva-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background-color: var(--secondary-background);
     gap: 16px;
     max-width: 100%;
     flex: 1;
     min-width: 280px;
   }
   
-  .canva-content h3 {
-    font-size: 1.5rem;
-    background: transparent;
-    color: var(--text-background-color);
-    margin: 0;
-    text-align: center;
-  }
-  
+ 
   #barChart,
   #pieChart {
     max-height: 300px;
@@ -45,35 +25,11 @@
   
   .table-container{
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
-    padding: 20px;
-    background-color: var(--secondary-background);
-    margin-top: 20px;
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
-    border-radius: 20px;
+    -webkit-overflow-scrolling: touch; 
   }
 
-  .table-container input{
-    float: right;
-    margin-bottom: 10px;
-    width: 100%;
-    max-width: 250px;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-    transition: all .5s ease-in-out;
-  }
 
-  .pagination{
-    padding: 10px;
-    border-bottom: 1px solid var(--input-border-color);
-    border-left: 1px solid var(--input-border-color);
-    border-right: 1px solid var(--input-border-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+
 
 .number-group{
   width: 100%;
@@ -97,7 +53,7 @@ color: var(--text-background-color);
   transition: all 0.3s ease;
   border-radius: 50%;
   background: transparent;
-  border: 2px solid var(--text-background-color);
+  border: 1px solid var(--text-background-color);
   outline: 0;
   width: 45px;
 }

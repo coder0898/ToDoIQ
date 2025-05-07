@@ -13,92 +13,107 @@
       referrerpolicy="no-referrer"
     />
   </head>
-  <body>
+  <body class="body-custom">
     <!-- header -->
-    <header>
-      <h1>
-        <span><i class="fa-solid fa-table-list"></i></span>ToDoIQ
+    <header
+      class="p-2 shadow-sm bg-white d-flex justify-content-between align-items-center sm:w-auto"
+    >
+      <h1 class="ms-4 p-2 fs-1 text-primary fw-bolder">
+        <span><i class="fa-solid fa-table-list me-3"></i></span>ToDoIQ
       </h1>
-      <div class="menu-toggle">
+      <div class="me-4 menu-toggle">
         <i class="fa-solid fa-bars"></i>
       </div>
     </header>
     <!-- main -->
-    <main>
-      <div class="menu-container">
-        <nav class="tab-container">
-          <button class="tab-link active">
-            <span><i class="fa-solid fa-chart-line"></i></span>Dashboard
+    <main class="d-flex justify-content-between sm:flex-wrap">
+      <div class="menu-container shadow-sm bg-white md:wx-100 sm:wx-100">
+        <!-- Menu content here -->
+        <nav class="d-flex flex-column gap-4 pt-4">
+          <button class="w-auto p-4 fw-medium tab-link active">
+            <span><i class="fa-solid fa-chart-line me-3"></i></span>Dashboard
           </button>
-          <button class="tab-link">
-            <span><i class="fa-solid fa-list"></i></span>My Todo
+          <button class="w-auto p-4 fw-medium tab-link">
+            <span><i class="fa-solid fa-list me-3"></i></span>My Todo
           </button>
         </nav>
       </div>
-      <div class="container">
-        <section class="tab-content content-active">
-          <h2>Dashboard</h2>
-          <div class="count-container">
-            <div class="card-width" id="total">
-              <h4>Total Todo</h4>
-              <p id="totalCount">0</p>
-            </div>
-            <div class="card-width" id="pending">
-              <h4>Pending Todo</h4>
-              <p id="pendingCount">0</p>
-            </div>
-            <div class="card-width" id="completed">
-              <h4>Completed Todo</h4>
-              <p id="completedCount">0</p>
-            </div>
-          </div>
-          <div class="chart-container">
-            <div class="canva-content">
-              <h3>Overview</h3>
-              <canvas id="pieChart"></canvas>
-            </div>
-            <div class="canva-content">
-              <h3>Pending VS Completed</h3>
-              <canvas id="barChart"></canvas>
-            </div>
-          </div>
-          <div class="table-container">
-            <h2>Recent Todo</h2>
-            <input type="search" id="searchTodo" placeholder="search Todo..." />
-            <table class="todo-content">
-              <thead>
-                <tr>
-                  <th>Id</th>
-                  <th>Todo Title</th>
-                  <th>Category</th>
-                  <th>Priority</th>
-                  <th>Due Date</th>
-                  <th>Completed</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-            <div class="pagination">
-              <div class="page-info">
-                <p>Showing 5 entires on 1 page</p>
-              </div>
-              <div class="number-group" id="paginationControls">
-                <!-- <button>1</button> -->
-              </div>
-            </div>
-          </div>
-        </section>
+      <div class="container ms-4 p-4">
+        <section class="tab-content content-active px-3 py-4">
+          <!-- Header -->
+          <h2 class="text-primary display-5 mb-4">Dashboard</h2>
 
-        <section class="tab-content">
-          <h2>My Todo</h2>
-          <!-- todo form -->
-          <div class="todo-container">
-            <h3>Create Todo</h3>
-            <form>
-              <table class="todo-content">
-                <thead>
+          <!-- Stats Cards -->
+          <div class="container mb-5">
+            <div class="row g-4">
+              <div class="col-12 col-md-4">
+                <div class="card text-bg-primary text-center p-3">
+                  <h4 class="fs-4">Total Todo</h4>
+                  <p id="totalCount" class="display-6">0</p>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="card text-bg-danger text-center p-3">
+                  <h4 class="fs-4">Pending Todo</h4>
+                  <p id="pendingCount" class="display-6">0</p>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="card text-bg-success text-center p-3">
+                  <h4 class="fs-4">Completed Todo</h4>
+                  <p id="completedCount" class="display-6">0</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Section -->
+          <div class="container mb-5">
+            <div class="row g-4">
+              <div class="col-12 col-md-6">
+                <div class="card p-4 rounded-4 text-center h-100">
+                  <h3 class="mb-3 bg-white text-primary">Overview</h3>
+                  <canvas
+                    id="pieChart"
+                    style="width: 100%; height: auto"
+                  ></canvas>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="card p-4 rounded-4 text-center h-100">
+                  <h3 class="mb-3 bg-white text-primary">
+                    Pending VS Completed
+                  </h3>
+                  <canvas
+                    id="barChart"
+                    style="width: 100%; height: auto"
+                  ></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Todo Table -->
+          <div
+            class="container table-container bg-white d-flex flex-column shadow-sm rounded-4 p-4"
+          >
+            <h2 class="mb-3">Recent Todo</h2>
+            <div class="mb-3">
+              <input
+                type="search"
+                id="searchTodo"
+                class="form-control"
+                placeholder="Search Todo..."
+              />
+            </div>
+            <div
+              class="table-responsive d-flex flex-column"
+              style="border-collapse: collapse"
+            >
+              <table class="todo-content table table-striped align-middle">
+                <thead class="table-primary">
                   <tr>
+                    <th>Id</th>
                     <th>Todo Title</th>
                     <th>Category</th>
                     <th>Priority</th>
@@ -108,74 +123,138 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>
-                      <input
-                        type="text"
-                        id="TodoTitle"
-                        placeholder="Add Todo Title..."
-                        required
-                      />
-                    </td>
-                    <td>
-                      <select id="SelectCategory" required>
-                        <option value="">Select</option>
-                        <option value="Presonal">Personal</option>
-                        <option value="Work">Work</option>
-                        <option value="Others">Others</option>
-                      </select>
-                    </td>
-                    <td>
-                      <select id="SelectPriority">
-                        <option value="">Select</option>
-                        <option value="Low">Low</option>
-                        <option value="Medium">Medium</option>
-                        <option value="High">High</option>
-                      </select>
-                    </td>
-                    <td>
-                      <input type="date" id="DueDateVal" required />
-                    </td>
-                    <td>
-                      <input type="checkbox" id="CompletedCheck" />
-                      <span id="CheckStatus">Pending</span>
-                    </td>
-                    <td>
-                      <button id="submitTodo">Add Todo</button>
-                    </td>
-                  </tr>
+                  <!-- Filled dynamically -->
                 </tbody>
               </table>
+              <!-- Pagination -->
+              <div
+                class="mt-0 d-flex justify-content-between align-items-center"
+              >
+                <p class="ms-4 mb-0">Showing 5 entries on 1 page</p>
+                <div
+                  id="paginationControls"
+                  class="pagination pagination-sm me-4"
+                >
+                  <!-- Pagination buttons go here -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="tab-content px-3 py-4 container">
+          <h2 class="text-primary display-5 mb-4 text-center">My Todo</h2>
+
+          <!-- Todo Form -->
+          <div class="bg-white shadow-sm rounded-4 p-4 mb-5">
+            <h3 class="bg-primary text-white p-3 rounded text-center fs-4">
+              Create Todo
+            </h3>
+            <form>
+              <div class="table-responsive">
+                <table class="table align-middle">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Todo Title</th>
+                      <th>Category</th>
+                      <th>Priority</th>
+                      <th>Due Date</th>
+                      <th>Completed</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <input
+                          type="text"
+                          id="TodoTitle"
+                          class="form-control"
+                          placeholder="Add Todo Title..."
+                          required
+                        />
+                      </td>
+                      <td>
+                        <select
+                          id="SelectCategory"
+                          class="form-select"
+                          required
+                        >
+                          <option value="">Select</option>
+                          <option value="Personal">Personal</option>
+                          <option value="Work">Work</option>
+                          <option value="Others">Others</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select id="SelectPriority" class="form-select">
+                          <option value="">Select</option>
+                          <option value="Low">Low</option>
+                          <option value="Medium">Medium</option>
+                          <option value="High">High</option>
+                        </select>
+                      </td>
+                      <td>
+                        <input
+                          type="date"
+                          id="DueDateVal"
+                          class="form-control"
+                          required
+                        />
+                      </td>
+                      <td class="text-center">
+                        <input type="checkbox" id="CompletedCheck" />
+                        <span id="CheckStatus" class="ms-2">Pending</span>
+                      </td>
+                      <td>
+                        <button id="submitTodo" class="btn btn-primary">
+                          Add Todo
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </form>
           </div>
-          <!-- editForm -->
-          <div id="todoModal" class="modal">
-            <div class="modal-content">
-              <h3>Edit Todo</h3>
-              <form>
-                <div class="edit-content">
-                  <div class="form-group">
-                    <label for="editTodoTitle">Todo Title</label>
+
+          <!-- Edit Modal -->
+          <div class="modal" id="todoModal" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content p-4">
+                <h3 class="modal-title mb-3">Edit Todo</h3>
+                <form>
+                  <div class="mb-3">
+                    <label for="editTodoTitle" class="form-label"
+                      >Todo Title</label
+                    >
                     <input
                       type="text"
                       id="editTodoTitle"
-                      placeholder="Add Todo Title..."
+                      class="form-control"
                       required
                     />
                   </div>
-                  <div class="block-group">
-                    <div class="form-group">
-                      <label for="editSelectCategory">Category</label>
-                      <select id="editSelectCategory" required>
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label for="editSelectCategory" class="form-label"
+                        >Category</label
+                      >
+                      <select
+                        id="editSelectCategory"
+                        class="form-select"
+                        required
+                      >
                         <option value="">Select</option>
-                        <option value="Presonal">Personal</option>
+                        <option value="Personal">Personal</option>
                         <option value="Work">Work</option>
                         <option value="Others">Others</option>
                       </select>
                     </div>
-                    <div class="form-group">
-                      <label for="editSelectPriority">Priority</label>
-                      <select id="editSelectPriority">
+                    <div class="col-md-6 mb-3">
+                      <label for="editSelectPriority" class="form-label"
+                        >Priority</label
+                      >
+                      <select id="editSelectPriority" class="form-select">
                         <option value="">Select</option>
                         <option value="Low">Low</option>
                         <option value="Medium">Medium</option>
@@ -183,27 +262,43 @@
                       </select>
                     </div>
                   </div>
-                  <div class="block-group">
-                    <div class="from-group">
-                      <label for="editDueDateVal">Due Date</label>
-                      <input type="date" id="editDueDateVal" required />
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label for="editDueDateVal" class="form-label"
+                        >Due Date</label
+                      >
+                      <input
+                        type="date"
+                        id="editDueDateVal"
+                        class="form-control"
+                        required
+                      />
                     </div>
-                    <div class="from-group">
-                      <input type="checkbox" id="editCompletedCheck" />
+                    <div class="col-md-6 mb-3 d-flex align-items-center">
+                      <input
+                        type="checkbox"
+                        id="editCompletedCheck"
+                        class="form-check-input me-2"
+                      />
                       <span id="editCheckStatus">Pending</span>
                     </div>
                   </div>
-                  <button class="edit-btn" id="editTodo">Edit Todo</button>
-                  <button class="close-btn">Close</button>
-                </div>
-              </form>
+                  <div class="d-flex justify-content-end gap-2 todo-actions">
+                    <button class="edit-btn" id="editTodo">Edit Todo</button>
+                    <button class="close-btn" data-bs-dismiss="modal">
+                      Close
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
-          <!-- todo listing -->
-          <div class="list-content">
-            <h2>All Todos</h2>
+
+          <!-- Todo List -->
+          <div class="list-content mt-5">
+            <h2 class="mb-3">All Todos</h2>
             <div class="list-container" id="todoItemList">
-              <!-- list from JavaScript -->
+              <!-- Todo items rendered here -->
             </div>
           </div>
         </section>

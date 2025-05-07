@@ -23,8 +23,9 @@
   box-sizing: border-box;
 }
 
-
+/* list card */
 .list-card {
+  width: 100%;
   background-color: var(--secondary-background);
   padding: 20px;
   border-radius: .5rem;
@@ -60,9 +61,7 @@
 }
 
 .todo-category {
-  background-color: var(--text-background-color);
   color: #fff;
-  padding: 4px 10px;
   border-radius: .3rem;
   font-size: 0.85rem;
 }
@@ -143,53 +142,25 @@
   background-color: var(--delete-hover);
 }
 
+/*dashboard card */
+
+.card-width{
+  color: #fff;
+  border-radius: .5rem;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+  width: 90%;
+  max-width: 300px;
+}
+
+.card-width p{
+  transition: all 0.3s ease-in-out;
+}
+
 @media (max-width: 600px) {
   .list-container {
     grid-template-columns: 1fr;
   }
 }
-/* dashboard list */
-.count-container{
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 100%;
-  gap: 20px;
-}
 
-.card-width{
-  color: #fff;
-  padding: 20px;
-  border-radius: .5rem;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
-  font-size: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  width: 90%;
-  max-width: 350px;
-  align-items: center;
-}
 
-.card-width h4{
-  font-size: 1.5rem;
-}
 
-.card-width p{
-  font-size: 2.5rem;
-  transition: all 0.3s ease-in-out;
-}
-
-#total{
-  background-color: var(--text-background-color );
-}
-
-#completed{
-  background-color: var(--status-completed);
-}
-
-#pending{
-  background-color: var(--delete-button);
-}

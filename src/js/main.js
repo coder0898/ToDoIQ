@@ -4,6 +4,9 @@ import "../css/todoForm.css";
 import "../css/menu.css";
 import "../css/chart.css";
 import "../css/modal.css";
+// src/main.js
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import { setupTabs, setupSidebarToggle } from "./tabs.js";
 import { CreateTodo, setFormDataForEdit, setupForm } from "./form.js";

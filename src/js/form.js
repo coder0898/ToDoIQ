@@ -5,49 +5,6 @@ import { formatDateForInput, getFormatDate, ResetForm } from "./util";
 
 const formattedDueDate = null;
 
-// export function setupForm(onCreateCallback, isEditEvent) {
-//   if (isEditEvent) {
-//     const title = document.getElementById("editTodoTitle");
-//     const category = document.getElementById("editSelectCategory");
-//     const dueDate = document.getElementById("editDueDateVal");
-//     const priority = document.getElementById("editSelectPriority");
-//     const completed = document.getElementById("editCompletedCheck");
-//     const checkStatus = document.getElementById("editCheckStatus");
-//     const submitBtn = document.getElementById("editTodo");
-
-//     completed.addEventListener("change", () => {
-//       checkStatus.innerText = completed.checked ? "Completed" : "Pending";
-//     });
-
-//     submitBtn.addEventListener("click", (e) => {
-//       e.preventDefault();
-//       onCreateCallback(isEditing, editingId);
-//       isEditing = false;
-//       editingId = null;
-//       isEditEvent = false;
-//     });
-//   } else {
-//     const title = document.getElementById("todoTitle");
-//     const category = document.getElementById("selectCategory");
-//     const dueDate = document.getElementById("dueDateVal");
-//     const priority = document.getElementById("selectPriority");
-//     const completed = document.getElementById("completedCheck");
-//     const checkStatus = document.getElementById("checkStatus");
-//     const submitBtn = document.getElementById("submitTodo");
-
-//     completed.addEventListener("change", () => {
-//       checkStatus.innerText = completed.checked ? "Completed" : "Pending";
-//     });
-
-//     submitBtn.addEventListener("click", (e) => {
-//       e.preventDefault();
-//       onCreateCallback(isEditing, editingId);
-//       isEditing = false;
-//       editingId = null;
-//     });
-//   }
-// }
-
 export function setupForm(onAddCallback, onEditCallback) {
   // Add Form Setup
   const title = document.getElementById("TodoTitle");
@@ -85,24 +42,6 @@ export function setupForm(onAddCallback, onEditCallback) {
     onEditCallback();
   });
 }
-
-// export function setFormDataForEdit(todo) {
-//   document.getElementById("editTodoTitle").value = todo.title;
-//   document.getElementById("editSelectCategory").value = todo.category;
-//   document.getElementById("editDueDateVal").value = formatDateForInput(
-//     todo.dueDate
-//   );
-//   document.getElementById("editSelectPriority").value = todo.todoPriority;
-//   document.getElementById("editCompletedCheck").checked =
-//     todo.todoStatus === "Completed";
-//   document.getElementById("editCheckStatus").innerText = todo.todoStatus;
-
-//   isEditing = true;
-//   editingId = todo.id;
-
-//   // Optionally scroll to form or focus the input
-//   document.getElementById("editTodoTitle").focus();
-// }
 
 export function setFormDataForEdit(todo) {
   document.getElementById("editTodoTitle").value = todo.title;

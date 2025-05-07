@@ -1,5 +1,5 @@
 export function setupTabs() {
-  const tabButtons = document.querySelectorAll(".tab-container .tab-link");
+  const tabButtons = document.querySelectorAll(".tab-link");
   const tabContent = document.querySelectorAll(".container .tab-content");
 
   tabButtons.forEach((button, index) => {

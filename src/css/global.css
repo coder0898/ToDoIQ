@@ -22,33 +22,9 @@
     --status-completed:#32CD32;
 }
 
-body{
+.body-custom{
   background-color: var(--primary-background);
-
 }
 
-header{
-  width: 100%;
-  background-color: var(--secondary-background);
-  padding: 10px;
-  border-bottom: 1px solid var(--input-border-color);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
-h1{
-  color: var(--text-background-color);
-  font-size: 2.3rem;
-  margin-left: 20px;
-}
 
-h1 i{
-  margin-right: 10px;
-}
-
-main{
-  width: 100%;
-  display: flex;
-  gap: 20px;
-}

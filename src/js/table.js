@@ -24,8 +24,13 @@ export function TableDisplay(todoList, currentIndex, entriesPerPage) {
       const DueDateData = createElement("td", "", dueDate);
       const CompletedData = createElement("td", "", todoStatus);
       const TodoAction = createElement("td", "todo-actions");
-      const DeleteButton = createElement("button", "delete-btn", "Delete");
+      const DeleteButton = createElement(
+        "button",
+        "delete-btn btn btn-danger",
+        "Delete"
+      );
       DeleteButton.setAttribute("data-id", id);
+      DeleteButton.setAttribute("type", "button");
       TodoAction.append(DeleteButton);
 
       tableRow.append(
@@ -52,6 +57,9 @@ export function RenderPagination(todoLists, currentIndex, entriesPerPage) {
     pageButton.textContent = i;
     pageButton.disabled = i == currentIndex;
     pageButton.classList.remove("active");
+    pageButton.classList.add("page-item");
+    pageButton.classList.add("page-link");
+    pageButton.classList.add("me-3");
     pageButton.addEventListener("click", () => {
       currentIndex = i;
       TableDisplay(todoLists, currentIndex, entriesPerPage);
